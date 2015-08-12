@@ -7,9 +7,10 @@ describe('Controller: <%= classedName %>Controller', function() {
     beforeEach(module('<%= scriptAppName %>'));
 
     // Initialize the controller and a mock scope if it is needed
-    beforeEach(inject(function($controller) {
+    beforeEach(function() {
+        bard.inject('$controller');
         controller = $controller('<%= classedName %>Controller', {});
-    }));
+    });
 
     describe('Admin controller', function() {
         it('should be created successfully', function() {
