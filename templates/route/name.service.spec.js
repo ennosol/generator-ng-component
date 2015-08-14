@@ -4,11 +4,13 @@
 describe('Service: <%= serviceName %>', function() {
 
     beforeEach(function() {
-        // load the service's module
-        module('<%= scriptAppName %>');
-        // include previous module containing mocked service which will override actual service
-        // , because it's declared later
-        module('mock.<%= dataServiceName %>');
+        bard.appModule(
+            // load the service's module
+            '<%= scriptAppName %>',
+            // include previous module containing mocked service which will override actual service
+            // , because it's declared later
+            'mock.<%= dataServiceName %>'
+        );
         // instantiate service
         bard.inject('<%= serviceName %>', '<%= dataServiceName %>');
     });

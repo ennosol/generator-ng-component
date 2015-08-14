@@ -2,11 +2,10 @@
 
 describe('Service: <%= cameledName %>', function() {
 
-    // load the service's module
-    beforeEach(module('<%= scriptAppName %>'));
-
-    // instantiate service
     beforeEach(function() {
+        // load the service's module
+        bard.appModule('<%= scriptAppName %>')
+        // instantiate service
         bard.inject('<%= cameledName %>');
     });
 

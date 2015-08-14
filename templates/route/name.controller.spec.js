@@ -6,16 +6,18 @@ describe('Controller: <%= controllerName %>', function() {
 
     // load the controller's module
     beforeEach(function() {
-        module('<%= scriptAppName %>');
-        // include previous module containing mocked service which will override actual service
-        // , because it's declared later
-        module('mock.<%= serviceName %>');
-        module('mock.<%= dataServiceName %>');
+        bard.appModule(
+            '<%= scriptAppName %>',
+            // include previous module containing mocked service which will override actual service
+            // , because it's declared later
+            'mock.<%= serviceName %>',
+            'mock.<%= dataServiceName %>'
+        );
         bard.inject('$controller', '$rootScope', '<%= serviceName %>', '<%= dataServiceName %>');
     });
 
     // Initialize the controller and a mock scope if it is needed
-    beforeEach(inject(function($controller) {
+    beforeEach(function() {
         // Create a spy on the mocked service function and wait for the promise that was defined in the mock service
         sinon.spy(<%= dataServiceName %>, 'getThingsFromBackend');
         // Or we could use sinon.js to redefine the function of the service.
@@ -24,7 +26,7 @@ describe('Controller: <%= controllerName %>', function() {
         // IMPORTANT!!! Propagate promise resolution to 'then' functions using $apply().
         // Without this the then won't be called
         $rootScope.$apply();
-    }));
+    });
 
     describe('<%= classedName %> controller', function() {
         it('should be created successfully', function() {

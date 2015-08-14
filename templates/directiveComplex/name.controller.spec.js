@@ -5,12 +5,20 @@ describe('Controller: <%= classedName %>Controller', function() {
     var controller;
 
     // load the controller's module
-    beforeEach(module('<%= scriptAppName %>'));
+    beforeEach(function() {
+        bard.appModule(
+            '<%= scriptAppName %>'
+            // include previous module containing mocked service which will override actual service
+            // , because it's declared later
+            // Put here mock service modules
+        );
+        bard.inject('$controller');
+    });
 
     // Initialize the controller and a mock scope if it is needed
-    beforeEach(inject(function($controller) {
+    beforeEach(function() {
         controller = $controller('<%= classedName %>Controller', {});
-    }));
+    });
 
     describe('<%= classedName %> controller', function() {
         it('should be created successfully', function() {

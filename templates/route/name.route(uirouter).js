@@ -8,6 +8,7 @@ angular.module('<%= scriptAppName %>')
                 templateUrl: '<%= htmlUrl %>',
                 controller: '<%= controllerName %>',
                 controllerAs: 'vm',
+                title: '<%= classedName %>',
                 //resolve: <%= controllerName %>.resolve
             });
     });
