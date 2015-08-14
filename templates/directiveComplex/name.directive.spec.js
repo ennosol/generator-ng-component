@@ -9,9 +9,18 @@ describe('Directive: <%= prefixedCameledName %>', function() {
     var scope;
     var firstDivElement;
 
-    // load the directive's module and view
-    beforeEach(module('<%= scriptAppName %>'));
-    beforeEach(module('<%= htmlUrl %>'));
+    // load the controller's module
+    beforeEach(function() {
+        bard.appModule(
+            '<%= scriptAppName %>',
+            // Load the template
+            '<%= htmlUrl %>'
+            // include previous module containing mocked service which will override actual service
+            // , because it's declared later
+            // Put here mock service modules
+        );
+        bard.inject('$controller');
+    });
 
     beforeEach(inject(function($compile, $rootScope) {
         // The minimum necessary template HTML for this spec.

@@ -6,11 +6,13 @@ describe('Controller: <%= controllerName %>', function() {
 
     // load the controller's module
     beforeEach(function() {
-        module('<%= scriptAppName %>');
-        // include previous module containing mocked service which will override actual service
-        // , because it's declared later
-        module('mock.<%= serviceName %>');
-        module('mock.<%= dataServiceName %>');
+        bard.appModule(
+            '<%= scriptAppName %>',
+            // include previous module containing mocked service which will override actual service
+            // , because it's declared later
+            'mock.<%= serviceName %>',
+            'mock.<%= dataServiceName %>'
+        );
         bard.inject('$controller', '$rootScope', '<%= serviceName %>', '<%= dataServiceName %>');
     });
 

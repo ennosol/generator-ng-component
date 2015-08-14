@@ -1,15 +1,18 @@
 'use strict';
 
 describe('Filter: <%= cameledName %>', function() {
+    var <%= cameledName %>;
 
-    // load the filter's module
-    beforeEach(module('<%= scriptAppName %>'));
+    // load the controller's module
+    beforeEach(function() {
+        bard.appModule('<%= scriptAppName %>');
+        bard.inject('$filter');
+    });
 
     // initialize a new instance of the filter before each test
-    var <%= cameledName %>;
-    beforeEach(inject(function($filter) {
+    beforeEach(function() {
         <%= cameledName %> = $filter('<%= cameledName %>');
-    }));
+    });
 
     it('should return the input prefixed with "<%= cameledName %> filter:"', function() {
         var text = 'angularjs';<% if (hasFilter('jasmine')) { %>

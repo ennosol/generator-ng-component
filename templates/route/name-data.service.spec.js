@@ -4,7 +4,7 @@ describe('Service: <%= dataServiceName %>', function() {
 
     beforeEach(function() {
         // load the service's module
-        module('<%= scriptAppName %>');
+        bard.appModule('<%= scriptAppName %>');
         // instantiate service
         bard.inject('<%= dataServiceName %>');
     });

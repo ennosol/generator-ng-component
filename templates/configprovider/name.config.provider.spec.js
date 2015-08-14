@@ -2,14 +2,12 @@
 
 describe('Service: <%= cameledName %>Config', function() {
 
-    // load the service's module
-    beforeEach(module('<%= scriptAppName %>'));
-
-    // instantiate service
-    var <%= cameledName %>Config;
-    beforeEach(inject(function(_<%= cameledName %>Config_) {
-        <%= cameledName %>Config = _<%= cameledName %>Config_;
-    }));
+    beforeEach(function() {
+        // load the service's module
+        bard.appModule('<%= scriptAppName %>');
+        // instantiate service
+        bard.inject('<%= cameledName %>Config');
+    });
 
     it('should do something', function() {<% if (hasFilter('jasmine')) { %>
         expect(!!<%= cameledName %>Config).toBe(true);<% } if (hasFilter('mocha')) { %>
